@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Night — Interactive Quiz App</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="stage">
+
+  <!-- ============ START SCREEN ============ -->
+  <section class="screen" id="start-screen" aria-live="polite">
+    <p class="eyebrow">Quiz Night</p>
+    <h1 class="title">How much do you<br>actually know?</h1>
+    <p class="subtitle">10 random questions from a pool of <span id="pool-size-preview">140</span>. 15 seconds each. No going back.</p>
+
+    <div class="start-meta">
+      <div class="meta-chip">
+        <span class="meta-chip__num" id="question-count-preview">10</span>
+        <span class="meta-chip__label">Questions</span>
+      </div>
+      <div class="meta-chip">
+        <span class="meta-chip__num">15s</span>
+        <span class="meta-chip__label">Per question</span>
+      </div>
+      <div class="meta-chip" id="best-score-chip" hidden>
+        <span class="meta-chip__num" id="best-score-value">0</span>
+        <span class="meta-chip__label">Best score</span>
+      </div>
+    </div>
+
+    <button class="btn btn--primary" id="start-btn">Start quiz</button>
+  </section>
+
+  <!-- ============ QUIZ SCREEN ============ -->
+  <section class="screen" id="quiz-screen" hidden>
+    <header class="quiz-topbar">
+      <div class="progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <div class="quiz-topbar__row">
+        <span class="question-index" id="question-index">Question 1 of 10</span>
+        <span class="score-live">Score <strong id="score-live-value">0</strong></span>
+      </div>
+    </header>
+
+    <div class="quiz-body">
+      <div class="timer-ring" id="timer-ring" aria-hidden="true">
+        <svg viewBox="0 0 64 64">
+          <circle class="timer-ring__track" cx="32" cy="32" r="28"></circle>
+          <circle class="timer-ring__progress" id="timer-ring-progress" cx="32" cy="32" r="28"></circle>
+        </svg>
+        <span class="timer-ring__value" id="timer-value">15</span>
+      </div>
+
+      <h2 class="question-text" id="question-text">Loading question…</h2>
+
+      <div class="options" id="options-list"></div>
+    </div>
+
+    <footer class="quiz-footer">
+      <span class="hint" id="quiz-hint">Pick an answer to continue</span>
+      <button class="btn btn--ghost" id="next-btn" disabled>Next question</button>
+    </footer>
+  </section>
+
+  <!-- ============ RESULT SCREEN ============ -->
+  <section class="screen" id="result-screen" hidden>
+    <p class="eyebrow" id="result-eyebrow">Final score</p>
+    <h1 class="result-score"><span id="result-score-value">0</span><span class="result-score__of">/10</span></h1>
+    <p class="result-message" id="result-message">Nice run.</p>
+
+    <div class="result-stats">
+      <div class="result-stat">
+        <span class="result-stat__num" id="stat-correct">0</span>
+        <span class="result-stat__label">Correct</span>
+      </div>
+      <div class="result-stat">
+        <span class="result-stat__num" id="stat-wrong">0</span>
+        <span class="result-stat__label">Wrong</span>
+      </div>
+      <div class="result-stat">
+        <span class="result-stat__num" id="stat-skipped">0</span>
+        <span class="result-stat__label">Skipped</span>
+      </div>
+      <div class="result-stat">
+        <span class="result-stat__num" id="stat-avgtime">0s</span>
+        <span class="result-stat__label">Avg. time</span>
+      </div>
+    </div>
+
+    <div class="breakdown" id="breakdown-list"></div>
+
+    <div class="result-actions">
+      <button class="btn btn--primary" id="retry-btn">Play again</button>
+    </div>
+  </section>
+
+</div>
+
+<script src="questions.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
