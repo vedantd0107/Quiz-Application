@@ -2,7 +2,7 @@
 
 An interactive multiple-choice quiz app built with vanilla HTML, CSS, and JavaScript — no frameworks, no build step. Answer questions against a live per-question countdown, track your score in real time, and get a full breakdown at the end.
 
-[**[Live demo](#)** *(add your GitHub Pages link here once deployed)*](https://vedantd0107.github.io/Quiz-Application/)
+[**[Live demo](#)** ](https://vedantd0107.github.io/Quiz-Application/)
 
 ## Features
 
